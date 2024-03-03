@@ -1,0 +1,39 @@
+.css-ptext {
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 100%;
+    margin-left: 30px;
+}
+.p-showtask1 {
+    height: 50px;
+    font-size: 30px;
+    font-weight: 700;
+}
+.p-showtask2 {
+    height: 50px;
+    font-size: 20px;
+    color: rgb(98, 98, 98);
+}
+.p-showtask3 {
+    height: 50px;
+    font-size: 25px;
+}
+
+.edit {
+    width: 120px;
+    button {
+        margin: 0 5px;
+        background-color: transparent;
+        border: 2px solid transparent;
+        padding: 3px 3px;
+        cursor: pointer;
+        &:hover {
+            border: 2px solid var(--primaryone);
+            border-radius: 4px;
+        }
+    }
+}
+.edit-icon {
+    font-size: 24px;
+}

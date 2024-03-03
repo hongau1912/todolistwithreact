@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600;700&display=swap');
+:root {
+    --primary: #e4eede;
+    --primaryone: #a7d09f;
+    --boderred: #fe2c55;
+    --padding: 20px 0px;
+    --default-layout-width: 500px;
+    --default-layout-height: 800px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

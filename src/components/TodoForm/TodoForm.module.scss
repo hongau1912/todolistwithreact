@@ -1,0 +1,63 @@
+.wrapper-fix {
+    position: absolute;
+    margin: 10px auto;
+    margin-left: 20px;
+}
+.wrapper-addtask {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 260px;
+    width: 400px;
+    background-color: var(--primary);
+    padding: 20px 0px;
+    border-radius: 7px;
+    border: 3px solid var(--primaryone);
+    input {
+        background-color: var(--primaryone);
+        margin-bottom: 20px;
+        width: 90%;
+        height: 40px;
+        border-radius: 4px;
+    }
+}
+.title {
+    border: none;
+    font-size: 20px;
+    padding-left: 20px;
+    font-weight: 700;
+    &:focus {
+        outline: none;
+    }
+    &::placeholder {
+        color: black;
+    }
+}
+.date {
+    border: none;
+    font-size: 15px;
+    padding: 0 20px;
+    &:focus {
+        outline: none;
+    }
+}
+.task {
+    border: none;
+    font-size: 17px;
+    padding-left: 20px;
+    &:focus {
+        outline: none;
+    }
+    &::placeholder {
+        color: black;
+    }
+}
+.add-newtask {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0px !important;
+    &:hover {
+        cursor: pointer;
+        background-color: var(--primary);
+    }
+}
