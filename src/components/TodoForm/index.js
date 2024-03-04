@@ -4,39 +4,51 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 const cx = classNames.bind(styles);
 function TodoForm({ addTodo }) {
-    const [title, setTitle] = useState('');
-    const [date, setDate] = useState('');
-    const [task, setTask] = useState('');
+    const [formData, setFormData] = useState({
+        title: '',
+        date: '',
+        task: ''
+    })
+    const handleChange = (e) => {
+        const {name, value} = e.target
+        setFormData({
+            ...formData,
+            [name] : value
+        })
+    }
     const handleAddTask = () => {
-        const values = {
+        const newTask = {
             id: uuidv4(),
-            title,
-            date,
-            task,
-            isEditing: false,
-        };
-        addTodo(values);
-        setTitle('');
-        setDate('');
-        setTask('');
-    };
+            ...formData,
+            isEditing: false
+        }
+        addTodo(newTask)
+        setFormData({
+            title: '',
+            date: '',
+            task: ''
+        })
+    }
+
     return (
         <div className={cx('wrapper-fix')}>
             <div className={cx('wrapper-addtask')}>
                 <input
-                    onChange={(e) => setTitle(e.target.value)}
-                    value={title}
+                    name='title'
+                    onChange={handleChange}
                     className={cx('title')}
+                    value={formData.title}
                     placeholder="Title task"
                 />
-                <input onChange={(e) => setDate(e.target.value)} value={date} className={cx('date')} type="date" />
+                <input name='date' onChange={handleChange} value={formData.date} className={cx('date')} type="date" />
                 <input
-                    onChange={(e) => setTask(e.target.value)}
-                    value={task}
+                    name='task'
+                    onChange={handleChange}
+                    value={formData.task}
                     className={cx('task')}
                     placeholder="Todo task"
                 />
-                <input onClick={handleAddTask} className={cx('add-newtask')} type="button" value="Add" />
+                <input onClick={handleAddTask}  className={cx('add-newtask')} type="button" value="Add" />
             </div>
         </div>
     );

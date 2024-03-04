@@ -6,8 +6,7 @@ import { useState } from 'react';
 import TodoForm from '../TodoForm';
 import EditTodoForm from '../EditTodoForm';
 import Todo from '../Todo';
-import { v4 as uuidv4 } from 'uuid';
-uuidv4();
+
 const cx = classNames.bind(styles);
 function TodoWrapper() {
     const [showForm, setShowForm] = useState(false);

@@ -3,34 +3,52 @@ import styles from './EditTodoForm.module.scss';
 import { useState } from 'react';
 const cx = classNames.bind(styles);
 function EditTodoForm({ editTask, list }) {
-    const [title, setTitle] = useState(list.title);
-    const [date, setDate] = useState(list.date);
-    const [task, setTask] = useState(list.task);
-    const handleAddTask = () => {
+
+    const [editFormData, setEditFormData] = useState({
+        title: list.title,
+        date: list.date,
+        task: list.task
+    })
+
+    const handleEditChange = (e) => {
+        const {name, value} = e.target
+        setEditFormData({
+            ...editFormData,
+            [name]: value
+        })
+    }
+
+    const handleUpdate = () => {
         const values = {
-            title,
-            date,
-            task,
-            isEditing: false,
-        };
-        editTask(values, list.id);
-    };
+            ...editFormData,
+            isEditing: false
+        }
+        editTask(values, list.id)
+    }
+
     return (
         <>
             <input
-                onChange={(e) => setTitle(e.target.value)}
-                value={title}
+                name='title'
+                onChange={handleEditChange}
+                value={editFormData.title}
                 className={cx('showtask-title')}
                 placeholder="UpdateTitle task"
             />
-            <input onChange={(e) => setDate(e.target.value)} value={date} className={cx('showtask-date')} type="date" />
             <input
-                onChange={(e) => setTask(e.target.value)}
-                value={task}
+                name='date'
+                onChange={handleEditChange} 
+                value={editFormData.date} 
+                className={cx('showtask-date')} 
+                type="date" />
+            <input
+                name='task'
+                onChange={handleEditChange}
+                value={editFormData.task}
                 className={cx('showtask-todo')}
                 placeholder=" Up Todo task"
             />
-            <input onClick={handleAddTask} className={cx('showtask-update')} type="button" value="Update" />
+            <input onClick={handleUpdate} className={cx('showtask-update')} type="button" value="Update" />
         </>
     );
 }
