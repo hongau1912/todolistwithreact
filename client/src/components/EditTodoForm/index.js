@@ -23,7 +23,7 @@ function EditTodoForm({ editTask, list }) {
             ...editFormData,
             isEditing: false
         }
-        editTask(values, list.id)
+        editTask(values, list._id)
     }
 
     return (

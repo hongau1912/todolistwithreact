@@ -1,55 +1,55 @@
 import classNames from 'classnames/bind';
 import styles from './TodoForm.module.scss';
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 const cx = classNames.bind(styles);
-function TodoForm({ addTodo }) {
+function TodoForm({ handleAdd }) {
     const [formData, setFormData] = useState({
         title: '',
         date: '',
-        task: ''
-    })
+        task: '',
+    });
     const handleChange = (e) => {
-        const {name, value} = e.target
+        const { name, value } = e.target;
         setFormData({
             ...formData,
-            [name] : value
-        })
-    }
-    const handleAddTask = () => {
+            [name]: value,
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
         const newTask = {
-            id: uuidv4(),
             ...formData,
-            isEditing: false
-        }
-        addTodo(newTask)
+            isEditing: false,
+        };
+        handleAdd(newTask);
         setFormData({
             title: '',
             date: '',
-            task: ''
-        })
-    }
+            task: '',
+        });
+    };
 
     return (
         <div className={cx('wrapper-fix')}>
-            <div className={cx('wrapper-addtask')}>
+            <form onSubmit={handleSubmit} className={cx('wrapper-addtask')}>
                 <input
-                    name='title'
+                    name="title"
                     onChange={handleChange}
                     className={cx('title')}
                     value={formData.title}
                     placeholder="Title task"
                 />
-                <input name='date' onChange={handleChange} value={formData.date} className={cx('date')} type="date" />
+                <input name="date" onChange={handleChange} value={formData.date} className={cx('date')} type="date" />
                 <input
-                    name='task'
+                    name="task"
                     onChange={handleChange}
                     value={formData.task}
                     className={cx('task')}
                     placeholder="Todo task"
                 />
-                <input onClick={handleAddTask}  className={cx('add-newtask')} type="button" value="Add" />
-            </div>
+                <input className={cx('add-newtask')} type="submit" value="Add" />
+            </form>
         </div>
     );
 }

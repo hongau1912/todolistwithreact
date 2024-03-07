@@ -14,14 +14,14 @@ function Todo({ task, handleDelete, handleEdit }) {
             <div className={cx('edit')}>
                 <button>
                     <FontAwesomeIcon
-                        onClick={() => handleEdit(task.id)}
+                        onClick={() => handleEdit(task._id)}
                         className={cx('edit-icon')}
                         icon={faPenToSquare}
                     />
                 </button>
                 <button>
                     <FontAwesomeIcon
-                        onClick={() => handleDelete(task.id)}
+                        onClick={() => handleDelete(task._id)}
                         className={cx('edit-icon')}
                         icon={faTrashCan}
                     />
